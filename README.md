@@ -1,98 +1,110 @@
-# ShipReady 🚀
+<div align="center">
 
-A structured system and constraint framework for AI-assisted software engineering. This skill forces AI coding models (such as Claude) to design and write **production-ready, edge-case-hardened code** instead of defaulting to simple, happy-path-only prototypes.
+# 🚀 ShipReady
 
----
+### *The Spec-First Constraint Engine for Production-Grade AI Engineering*
 
-## 💡 Why This Exists
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Framework](https://img.shields.io/badge/AI--Engineering-Constraint--System-6f42c1)](https://github.com/Dheerax/ship-ready)
+[![Quality](https://img.shields.io/badge/UX-Production--Grade-00d26a)](https://github.com/Dheerax/ship-ready)
+[![Compatibility](https://img.shields.io/badge/Supports-Claude%20%7C%20Cursor%20%7C%20Windsurf%20%7C%20GPTs-0052cc)](https://github.com/Dheerax/ship-ready)
 
-When asked to build a feature, AI assistants default to the **Happy Path**—the primary user flow that looks good on the first pass. However, real-world production software (like GitHub, Stripe, Linear, and Vercel) feels polished because it handles the thousands of edge cases that arise in real usage.
+<br/>
 
-As a solo developer or small team, you don't have the years of user feedback loops to discover these edge cases. **ShipReady** acts as a programmatic proxy, forcing the AI to systematically map out and code for all states, permissions, and security guardrails *before* writing a single line of feature code.
+![ShipReady Hero Banner](./assets/hero-banner.png)
 
----
-
-## ⚙️ How It Works (The Gate)
-
-This skill establishes a strict **"Spec-First Gate."** 
-When loaded, it instructs the AI: **Do not write code first.** Instead, the AI must present a compact **Feature Surface Spec** for approval. 
-
-This spec acts as a checklist, allowing you to explicitly choose what is in scope for v1 and what is deferred, rather than the AI silently omitting features you didn't think to ask for.
+</div>
 
 ---
 
-## 🛠️ The 7 Pillars of the Spec
+## 💡 Why ShipReady Exists
 
-The Feature Surface Spec evaluates your proposed feature against seven engineering dimensions:
+When asked to build a feature, AI coding assistants (Claude, ChatGPT, Cursor) naturally default to the **Happy Path**—the primary user flow that works under ideal conditions. While this produces impressive 5-minute prototypes, it fails in production.
 
-### 1. State Matrix 📊
-Ensures every screen handles more than just the success state. It checks for:
-*   **Empty States:** What does a user see before any data exists? (Calls-to-action, templates).
-*   **Loading States:** Skeletons, disabled buttons, and spinners to indicate active processes.
-*   **Error States:** Distinct handling for network failures, input validation failures, and server crashes.
-*   **Success & Partial Data:** Success notifications and grids with only one item.
+Production-grade software (like GitHub, Stripe, Linear, and Vercel) feels reliable not because a larger model built it, but because it explicitly handles **thousands of edge cases** discovered over years of user feedback.
 
-### 2. Actor & Permission Matrix 🔑
-Defines who can interact with the feature and how:
-*   Maps roles (Owner, Admin, Member, Viewer, Guest).
-*   Solves edge cases like revoking permissions or mid-session role changes.
-
-### 3. Lifecycle & CRUD Completeness 🔄
-Expands simple "Create & List" features into complete lifecycle structures:
-*   **Full CRUD:** Create, Read, Update, Delete, Archive, Restore, Rename, Duplicate, Export, and Transfer Ownership.
-
-### 4. Destructive Action Safety ⚠️
-Prevents accidental data loss by enforcing friction:
-*   **Tier 1:** Undo toasts for quick recovery.
-*   **Tier 2:** Confirmation dialogs for non-destructive removals.
-*   **Tier 3:** Hard confirmation (e.g. typing a project name) for permanent deletes or transfers.
-
-### 5. Settings Taxonomy Check ⚙️
-Integrates workspace/account features into standard SaaS categories:
-*   Determines what the feature implies for Account, Security, Notifications, Billing, and Danger Zones.
-
-### 6. Competitor Surface Diff ⚖️
-Forces a comparison against 1-2 leading real-world implementations to identify missing usability details (e.g., how Linear handles project archiving).
-
-### 7. Anti-Pattern Self-Check 🚫
-A final audit step to eliminate common "AI-generated" bugs:
-*   Ensures forms have field-level validation, buttons have loading states, and tables are paginated.
+As a solo engineer or small team, **ShipReady acts as your automated senior engineering proxy**. It forces AI models to systematically map out and design for every UI state, permission layer, lifecycle action, and safety guardrail **before writing a single line of feature code**.
 
 ---
 
-## 📂 Directory Structure
+## ⚡ The Spec-First Gate Workflow
 
-Once extracted, the skill contains the following reference guides:
+ShipReady installs a strict **"Spec-First Gate"** inside the model's instruction loop. The AI is explicitly **blocked** from outputting feature code until it generates a structured **Feature Surface Spec** for developer review.
+
+![ShipReady Workflow](./assets/workflow.png)
+
+> **Key Advantage:** Scope becomes an **explicit choice** you approve or defer, rather than an **accidental gap** neither you nor the AI noticed.
+
+---
+
+## 🏛️ The 7 Engineering Pillars
+
+Every proposed feature is evaluated against **seven core architectural dimensions**:
+
+![The 7 Engineering Pillars](./assets/7-pillars.png)
+
+<br/>
+
+| Pillar | Focus Area | What it Hardens |
+| :--- | :--- | :--- |
+| **1. State Matrix 📊** | UI Resilience | Guarantees handling for **Empty**, **Loading**, **Error** (network, validation, server), **Partial Data**, **Permission Denied**, and **Zero Results**. |
+| **2. Actor & RBAC Matrix 🔑** | Multi-Tenant Safety | Maps interactions across **Owners, Admins, Members, Viewers, Guests**, and handles mid-session role revocations. |
+| **3. Lifecycle Completeness 🔄** | Full CRUD+ Operations | Expands basic "Create & List" into **Create, Read, Update, Delete, Archive, Restore, Duplicate, Rename, Export, and Transfer**. |
+| **4. Action Safety ⚠️** | Data Loss Friction | Enforces a **3-Tier Friction Model**: Undo Toasts (Tier 1), Dialogs (Tier 2), and Hard Type-to-Confirm (Tier 3). |
+| **5. Settings Taxonomy ⚙️** | SaaS Architecture | Maps feature implications across **Account, Security, Billing, Team, Notifications, and Danger Zones**. |
+| **6. Competitor Surface Diff ⚖️** | Usability Benchmarking | Compares proposed surface against 1–2 real-world industry leaders (Linear, Stripe, GitHub) to spot UX gaps. |
+| **7. Anti-Pattern Audit 🚫** | AI Code Smell Protection | Final pass to eliminate missing field validation, unpaginated tables, unhandled promise rejections, and vanishing toasts. |
+
+---
+
+## 📂 Repository Structure & Reference Guides
+
 ```
-ShipReady/
-├── SKILL.md                          # The core prompt and gate configuration
-├── README.md                         # This file
-└── references/
-    ├── state-matrix.md               # Visual state recipes and code patterns
-    ├── actor-permission-matrix.md    # Multi-tenant and permission checks
-    ├── lifecycle-crud.md             # CRUD+ entity checklist
-    ├── destructive-actions-safety.md # 3-Tier friction model for deletions
-    ├── settings-taxonomy.md          # SaaS settings mapping check
+ship-ready/
+├── SKILL.md                          # Main system prompt & gate configuration
+├── README.md                         # Product documentation & overview
+├── assets/                           # Infographics & visual diagrams
+│   ├── hero-banner.png
+│   ├── 7-pillars.png
+│   └── workflow.png
+└── references/                       # Detailed engineering pattern specs
+    ├── state-matrix.md               # 7-State UI recipes & code snippets
+    ├── actor-permission-matrix.md    # Multi-tenant RBAC edge-case checks
+    ├── lifecycle-crud.md             # Entity CRUD+ complete lifecycle matrix
+    ├── destructive-actions-safety.md # 3-Tier friction safety implementation
+    ├── settings-taxonomy.md          # Standard SaaS settings mapping guide
     ├── competitor-diffing.md         # Framework for diffing against real apps
-    └── anti-patterns.md              # AI code quality check list
+    └── anti-patterns.md              # Production-grade vs demo code audit
 ```
 
 ---
 
-## 🚀 How to Use
+## 🚀 Quick Start & Integration
 
-### 1. In Custom GPTs / Claude Projects
-Upload the `SKILL.md` file and the `references/` folder into your custom AI project files or custom system prompt guidelines.
+### 1. Claude Projects / Custom GPTs
+Upload `SKILL.md` and the `references/` directory into your project files or knowledge base, and set `SKILL.md` as core instructions.
 
-### 2. In Cursor / Windsurf / Copilot
-Add the contents of `SKILL.md` or a path pointer to your `.cursorrules` or system prompt guidelines.
+### 2. Cursor / Windsurf / Copilot
+Copy `SKILL.md` into your workspace rules (e.g. `.cursorrules`, `.windsurfrules`, or `.github/copilot-instructions.md`).
 
-### 3. By Manual Trigger
-Whenever you begin building a feature (e.g., "Add user workspace settings"), type:
-> *"Load ship-ready skill and generate the spec before coding."*
+### 3. Execution Trigger
+When starting any feature build, simply command:
+```bash
+"Load ship-ready skill and generate the Feature Surface Spec before coding."
+```
 
 ---
 
-## ⚖️ Calibration (V1 vs. Bloat)
+## ⚖️ Calibration: Scope Control vs. Feature Creep
 
-The purpose of this system is **visibility, not over-engineering**. The spec is designed to make the gaps visible so you can make informed decisions. If a feature is too complex for v1, simply label it **"Deferred for v1"** inside the spec and proceed with a clean, scoped build.
+ShipReady is designed for **visibility**, not over-engineering.
+
+The spec brings edge cases to light so you can make informed decisions. If a full audit log or transfer flow is unnecessary for your v1 release, simply mark it as **`[Deferred for V1]`** in the spec and proceed with a clean, tightly scoped build.
+
+---
+
+<div align="center">
+
+*Built for engineers who want to ship software that feels solid from Day 1.*
+
+</div>
